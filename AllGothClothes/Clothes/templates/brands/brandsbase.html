@@ -1,0 +1,14 @@
+<table border="1" cellpadding="20" cellspacing="0">
+    {% for i in allitems %}
+        <tr>
+            {% for p in i %}
+                <td valign="center" align="center" class='for-clothes-bg'>
+                    <a href="/Brands/{{title}}/{{p}}">
+                        <img class="size4shablon_img" src="{{ p.photo.url }}">
+                    </a>
+                    <h2><p class='qwe'>{{ p.name }}</p></h2>   
+                </td>      
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,61 @@
+{% extends 'Clothes/base.html' %}
+{% load static %}
+{% block divchik %}    
+    <div class="headerzxc"> 
+{% endblock divchik %}
+
+{% block content %}
+<style>
+    .headerzxc{
+        background: rgb(136, 136, 136, 0.5) no-repeat center/100%;
+        box-shadow: inset 0 3em 3em black, 0em 3px 2em rgb(0, 0, 0);
+        height: 50px;
+    }
+</style>
+
+<body>   
+    <table border="1" cellpadding="20" cellspacing="0">
+        <tr>
+            {% for p in posts %}
+                <td valign="center" align="center" bgcolor="white">
+                    <a href="/Brands/{{p.name}}"><img src="{{ p.photo.url }}"></a>
+                </td>          
+            {% endfor %}
+        </tr>
+    </table>    
+</body>
+<script>
+    const body = document.body;
+    const images = [
+        {% for image in images %}
+            '{% static "Clothes/images/4body/"|add:image %}',
+        {% endfor %}
+    ]; 
+    let currentImageIndex = 0;
+    let shadowIndex = 0;
+    let transitionDuration = 3000;
+
+    function changeBackground() {
+        const newImage = images[currentImageIndex];
+        body.style.transition = `background-image ${transitionDuration}ms ase max-height`;
+        body.style.backgroundImage = `url(${newImage})`;
+        body.style.backgroundRepeat = 'no-repeat';
+        body.style.backgroundPosition = 'center';
+        body.style.backgroundSize = 'cover';
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+
+    }
+    changeBackground();     
+    setInterval(changeBackground, transitionDuration);
+    var k = 1
+    function changeshadow() {
+        const header = document.querySelector('.headerzxc');
+        rndm = Math.random()
+        header.style.boxShadow = `inset 0 ${Math.abs(k - rndm)*1.5}em 2em black, 0em ${Math.abs(k - rndm)*1}em 2em rgb(0, 0, 0)`;
+        k = rndm
+    }
+    changeshadow();     
+    setInterval(changeshadow, 100);
+</script>
+{% endblock content %}
+

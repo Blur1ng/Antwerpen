@@ -1,0 +1,229 @@
+{% extends 'Clothes/base.html' %}
+
+{% block divchik %}
+<div class="headercnj">
+{% endblock divchik %}
+
+{% block content %}
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    .product-details {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .brand-name {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .cloth-name {
+      font-size: 18px;
+    }
+
+    .product-image {
+      position: relative; /* Установите позицию родителя */
+      width: 500px;
+      height: 500px;
+      overflow: hidden;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .item_content {
+      margin: 0 0 0 10px;
+      width: 70%;
+    }
+
+    p.er {
+      color: rgb(183, 183, 183);
+    }
+
+    .button {
+      background-color: #8c8c8c94;
+      border: none;
+      color: rgba(255, 255, 255);
+      padding: 10px 13px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 15px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .button.changed {
+      background-color: #646464b1;
+    }
+
+    .image-container {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 100%; /* Убедитесь, что контейнер занимает всю высоту */
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(182, 181, 181, 0.5);
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      z-index: 1; /* Поверх остальных элементов */
+    }
+    
+    .arrow.left {
+      left: 10px; /* Положение стрелки слева */
+    }
+    
+    .arrow.right {
+      right: 10px; /* Положение стрелки справа */
+    }
+    .image-wrapper {
+      min-width: 500px; /* ширина для каждого изображения */
+      height: 100%;
+      flex: none; /* чтобы они не сжимались */
+    }
+  </style>
+</head>
+<body>
+  <div class="product-details">
+
+    <div class="product-image">
+      <div class="image-container">
+        {% for item in object_list %}
+          {% if item.name == cloth_name %}
+            <div class="image-wrapper">
+              <img class="product-img" src="{{ item.photo.url }}">
+            </div>
+            {% if item.photo2 %}
+              <div class="image-wrapper">
+                <img class="product-img" src="{{ item.photo2.url }}">
+              </div>
+            {% endif %}
+            {% if item.photo3 %}
+              <div class="image-wrapper">
+                <img class="product-img" src="{{ item.photo3.url }}">
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <button class="arrow left" onclick="changeImage(-1)">&#10094;</button>
+      <button class="arrow right" onclick="changeImage(1)">&#10095;</button>
+    </div>
+    
+    <div class="item_content">
+      <p>
+        <u>
+          <span class="brand-name">{{ brand_name }}</span>
+          <span> - </span>
+          <span class="cloth-name">{{ cloth_name }}</span>
+        </u>
+      </p>
+      {% for item in object_list %}
+        {% if item.name == cloth_name %}
+          <p>Type of clothing: {{ item.type_of_clothing }}</p>
+          <p>Description: {{ item.content }}</p>
+          <p>Users Rating: <span id="current-rating">{{ rating }}</span></p>
+          {% if user.is_authenticated %}
+            <form method="post">
+              {% csrf_token %}
+              <div name="csrfmiddlewaretoken" id="buttons-container"></div>
+              <input type="hidden" id="cloth-id" value="{{ item.name }}">
+            </form>
+          {% else %}
+            <p class="er">(Чтобы поставить свою оценку, войдите в аккаунт)</p>
+          {% endif %}
+
+          <p>Cost: {{ item.cost }}</p>
+          {% if item.limited %}
+           <p>Limited: &#10003;</p>
+          {% else %}
+           <p>Limited: &#10005;</p>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</body>
+<script>
+  //кнопки изображения
+  let currentIndex = 0;
+  const images = document.querySelectorAll('.product-img');
+  const imageContainer = document.querySelector('.image-container');
+
+  function changeImage(direction) {
+    currentIndex += direction;
+
+    if (currentIndex < 0) {
+      currentIndex = images.length - 1; // зацикливание
+    } else if (currentIndex >= images.length) {
+      currentIndex = 0; // зацикливание
+    }
+
+    const offset = -currentIndex * 500; // ширина картинки
+    imageContainer.style.transform = `translateX(${offset}px)`;
+  }
+
+  //оценка
+  const container = document.getElementById('buttons-container');
+
+  for (let i = 0; i < 10; i++) {
+    const button = document.createElement('button');
+    button.classList.add('button');
+    button.textContent = i + 1;
+    button.addEventListener('click', (event) => {
+        event.preventDefault(); // Отменяем стандартное поведение кнопки
+        changeButtonsColor(button);
+        submitRating(i + 1); // передаем оценку
+    });
+    container.appendChild(button);
+  }
+
+  function changeButtonsColor(clickedButton) {
+    const buttons = container.querySelectorAll('.button');
+    buttons.forEach(button => {
+      button.classList.remove('changed');
+    });
+    
+    const buttonsBefore = Array.from(container.children).slice(0, Array.from(container.children).indexOf(clickedButton) + 1);
+    buttonsBefore.forEach(button => {
+      button.classList.add('changed');
+    });
+  }
+
+  function submitRating(rating) {
+    const clothId = document.getElementById('cloth-id').value;
+    $.ajax({
+      url: '/rate/',
+      method: 'POST',
+      data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        rating: rating,
+        cloth_name: clothId,
+      },
+      success: function(response) {
+        if (response.status === 'success') {
+          // Обновляем отображение нового рейтинга
+          $('#current-rating').text(response.new_rating);
+        }
+      },
+      error: function(xhr, status, error) {
+        console.error('Error:', error);
+        console.log(xhr,status)
+      }
+    });
+  }
+</script>
+{% endblock content %}

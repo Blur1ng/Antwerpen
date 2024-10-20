@@ -1,0 +1,137 @@
+body.q {   
+    background: url('../images/heaven.jpg');
+    background-repeat: no-repeat;
+    background-position: center/100%;
+    margin: 0;
+    background-size: cover;
+
+}
+
+body.mainbg {   
+    background: url('../images/mainbg.jpg') center top/100% no-repeat;
+}
+body.cnj {   
+    background: url('../images/cnjbg.jpg') center/100%;
+}
+body.kai {   
+    background: url('../images/kaibg.jpg') center top/100%;
+}
+body.cnv {   
+    background: url('../images/cnvbg.png') center top/100%;
+}
+body.log { /* Используем flexbox для выравнивания */
+    align-items: center; /* Выравнивание по вертикали */
+    background: url('../images/grass1.png') center top/100% no-repeat;
+    background-size: cover;
+}
+table {
+    width: 98%; /* Ширина таблицы занимает 100% ширины контейнера */
+    max-width: 100%; /* Максимальная ширина таблицы не превышает 100% */
+    table-layout: fixed; /* Фиксированная ширина столбцов таблицы */
+    border-collapse: collapse; /* Объединение границ ячеек таблицы */
+}
+
+img {
+    max-width: 100%; /* Изображения в ячейках таблицы адаптивны по ширине */
+    height: auto; /* Поддержание соотношения сторон изображений */
+}
+td {
+    width: 25%; /* Ширина ячейки таблицы равна 25% ширины таблицы */
+}
+td.for-clothes-bg{
+    background: rgba(26, 25, 25, 0.5) no-repeat center/100%;
+    border-color: rgba(26, 25, 25, 1);
+}
+
+@media only screen and (max-width: 600px) {
+    td {
+        width: 50%; /* При ширине экрана меньше 600px, ширина ячейки изменяется на 50% */
+    }
+}
+
+p.shadow1{
+    text-shadow: 10px 5px 10px rgb(68, 57, 57);
+    font-size: 100px;
+}
+p.shadow2{
+    text-shadow: 5px 15px 15px rgb(255, 255, 255);
+    font-size: 60px;
+}
+.hr-header{
+    /*background-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2), transparent);*/
+    margin: 0% 0 0px 0;
+}
+p.qwe{
+    color: #e7aab2;
+    text-shadow: 4px 4px 30px rgb(24, 24, 139);
+}
+/*background-image: linear-gradient(70deg, #4fff8a, #53c0ff, #ff607b);        
+    height: 100vh;*/
+label {
+    cursor: pointer;
+}
+label ~ .appear { 
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.2s ease max-height;
+}
+input {
+    display: none;
+}
+input:checked ~ .appear {
+    max-height: 300px;
+}
+.box {
+    width: 400px;
+    height: 300px;
+    background-color: rgb(206, 225, 226);
+    border: 0px solid #222;
+}   
+.box4logocnj{
+    background: url('../images/logo_brend/conjunctiva111.png') center top/100% no-repeat;
+    width: 500px;
+    height: 350px;
+    border: 0px;
+    margin: -100px auto
+}
+.box4logohk{
+    background: url('../images/logo_brend/hk4.png') center top/100% no-repeat;
+    width: 600px;
+    height: 140px;
+    border: 0px;
+    margin: 100px auto
+}
+.box4logocnv{
+    background: url('../images/logo_brend/puj.jpg') center top/100% no-repeat;
+    width: 600px;
+    height: 140px;
+    border: 0px;
+    margin: 70px auto
+}
+/*#######################################################################################*/
+.menu_mobile {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: -100%;
+    top: 0;
+    z-index: 1;
+    background: blue;
+    transition: left 1s 1s;
+}
+
+.menu_mobile.active {
+    left: 0;
+    transition: left 1s;
+}
+
+.close-menu {
+    transform: scale(0);
+    transition: transform 1s;
+}
+
+.close-menu-active {
+    transform: scale(1);
+    transition: transform 1s 1s;
+}

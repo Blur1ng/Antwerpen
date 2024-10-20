@@ -1,0 +1,156 @@
+{% extends 'Clothes/base.html' %}
+{% block divchik %}    
+    <div class="headercnj"> 
+{% endblock divchik %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        #footer {
+            opacity: 0;
+        }
+        .main{
+            margin-top: 70px;
+       }
+        .hr-header{
+            opacity: 0;
+            margin: 0% 0 0px 0;
+        }
+        a.zxc {
+          display: block; /* Превращаем ссылку в блочный элемент */
+          padding: 15px 100px; /* Отступы для оформления */
+          background-color: rgb(102, 117, 133, 0.5); /* Цвет фона */
+          border-radius: 5px; /* Скругленные углы */
+          text-decoration: none; /* Убираем подчеркивание */
+          color: Black; /* Цвет текста */
+          margin: auto; /* Автоматические отступы по бокам */
+          width: fit-content; /* Задаем ширину по содержимому */
+          box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.3);
+        }
+        a:hover {
+            color: rgb(20, 20, 20);
+        }
+        .main{
+            margin-top: -35px;
+        }
+    
+        h1.title { 
+            font-size: 50px;
+            font-family: 'Passion One', cursive; 
+            font-weight: 400; 
+        }
+    
+        hr.hr1{
+            width: 20%;
+            border-color: black;
+        }
+    
+        .form-group{
+            margin-bottom: 15px;
+        }
+    
+    
+        input,
+        input::-webkit-input-placeholder {
+            font-size: 11px;
+            padding-top: 3px;
+        }
+        label{
+            margin-bottom: 15px;
+        }
+        .main-login{
+            background-color: rgb(102, 117, 133, 0.5);
+            /* shadows and rounded borders */
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        
+        }
+    
+        .main-center{
+             margin-top: 30px;
+             margin: 0 auto;
+             max-width: 330px;
+            padding: 40px 40px;
+        
+        }
+    
+        .login-button{
+            margin-top: 5px;
+        }
+    
+        .login-register{
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            color: Black;
+            background-color: white;
+            border-color: rgb(102, 117, 133, 0.8);
+        }
+        .btn-primary:hover {
+            background-color: #f0f0f0; /* Изменяем цвет фона при наведении */
+            border-color: #ddd;      /* Изменяем цвет границы при наведении */
+            color: Black;
+        }
+        .error-message {
+            font-size: 30px;
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body class="log">
+    <div class="container">
+        <div class="row main">
+            <div class="panel-heading">
+               <div class="panel-title text-center">
+                        <h1 class="title">Login</h1>
+                        <p class="error-message">{{error}}</p>
+                        <hr class="hr1">
+                   </div>
+            </div> 
+            <div class="main-login main-center">
+                <form action='login' method='post' class="form-horizontal">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">Username</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input class="form-control" type="text" name="user_name" id="username"  placeholder="Enter your Username"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+                            </div>
+                        </div>
+                    </div>
+                    </br></br> 
+                    
+                    <div>
+                        <input type="Submit" name="submit" class="btn btn-primary btn-lg btn-block login-button" value="Enter">      
+                    </div>
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+
+<hr class="hr1">
+<a class="zxc" href='http://127.0.0.1:8000/login/register'>Registration</a>
+    
+</body>
+{% endblock content %}

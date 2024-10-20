@@ -1,0 +1,83 @@
+{% extends 'Clothes/base.html' %}
+{% block divchik %}    
+    <div class="header"> 
+{% endblock divchik %}
+
+{% block content %}
+<style>
+    div.nothing{
+        margin: 1700px auto;
+    }
+    .qq{
+        color: black;
+        font-size: 50px;
+    }
+
+</style>
+
+
+<body class='mainbg'>
+    
+    <p class='qq' align="center">The main page of my site</p>
+
+    <div class="nothing"></div>
+</body>
+<script>
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function demo2() {
+        while(true) {
+            await sleep(5000);
+            document.querySelector('.qq').textContent = "The main cage of my mind";
+            await sleep(100);
+            document.querySelector('.qq').textContent = "The main page of my site";
+            await sleep(1000);
+            document.querySelector('.qq').textContent = "The main cage of my mind";
+            await sleep(500);
+            document.querySelector('.qq').textContent = "The main page of my site";
+            await sleep(5000);
+            document.querySelector('.qq').textContent = "The main cage of my mind";
+            await sleep(1000);
+            for(let i = 0; i < 2; i+=1){
+                document.querySelector('.qq').textContent = "Teh mãni pağe oф ym site";
+                await sleep(100);
+                document.querySelector('.qq').textContent = "Tħe mani pgee ōf мy išťę";
+                await sleep(100);
+                document.querySelector('.qq').textContent = "Țhe мani ågpe of mŷ site";
+                await sleep(100);
+            }
+            document.querySelector('.qq').textContent = "Tħe main cage of my mind";
+            await sleep(300);
+            document.querySelector('.qq').textContent = "The main page of my site";
+            await sleep(1000);
+            if (Math.random() > 0.5){
+                document.querySelector('.qq').style.color = "rgb(86, 41, 41)";
+                document.querySelector('.qq').style.textShadow = "10px 5px 10px rgb(86, 41, 41)"
+                document.querySelector('.qq').textContent = "YOU ARE NOT ALONE";
+                await sleep(300);
+                document.querySelector('.qq').style.fontSize = "75px" 
+                await sleep(75);
+                document.querySelector('.qq').style.fontSize = "85px" 
+                await sleep(75);
+                document.querySelector('.qq').style.fontSize = "100px" 
+                await sleep(75);
+                document.querySelector('.qq').style.fontSize = "115px" 
+                await sleep(75);
+                document.querySelector('.qq').style.fontSize = "125px" 
+                await sleep(75);
+            }
+            document.querySelector('.qq').style.color = "black";
+            document.querySelector('.qq').style.fontSize = "50px" 
+            document.querySelector('.qq').style.textShadow = "0px 0px 0px white"
+            document.querySelector('.qq').textContent = "The main page of my site";
+            await sleep(4000);
+            
+        }
+    }
+
+    demo2();
+</script>
+{% endblock content %}
+
