@@ -19,9 +19,14 @@ body.kai {
 body.cnv {   
     background: url('../images/cnvbg.png') center top/100%;
 }
-body.log { /* Используем flexbox для выравнивания */
+body.log { 
     align-items: center; /* Выравнивание по вертикали */
     background: url('../images/grass1.png') center top/100% no-repeat;
+    background-size: cover;
+}
+body.feed { 
+    align-items: center; /* Выравнивание по вертикали */
+    background: url('../images/1.jpg') center top/100% no-repeat;
     background-size: cover;
 }
 table {
@@ -134,4 +139,57 @@ input:checked ~ .appear {
 .close-menu-active {
     transform: scale(1);
     transition: transform 1s 1s;
+}
+
+@font-face {
+    font-family: "Castoro Titling";
+    src: url("../fonts/CastoroTitling-Regular.ttf");
+}
+
+@font-face {
+    font-family: "BodoniModa";
+    src: url("../fonts/BodoniModa.ttf");
+}
+
+@font-face {
+    font-family: "DMSerifText-Regular";
+    src: url("../fonts/DMSerifText-Regular.ttf");
+}
+.base-font{
+    font-family: "Castoro Titling";
+}
+
+.ANTWEARPEN{
+    margin: center;
+    color: #fefefe;
+	text-shadow: 0px 4px 5px rgb(0, 0, 0), 0px 1px 5px rgb(0, 0, 0);
+	text-decoration:underline;
+    font-size: 25px;
+}
+
+.ANTWEARPEN:hover {
+	color: #e7e2dc;
+	text-shadow: 1px 5px 5px rgb(53, 30, 30);
+	text-decoration:underline;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Вертикальное выравнивание по центру */
+}
+
+.logo-feedback {
+    background: url('../images/Telegram_logo.svg.png') center top/100% no-repeat;
+    width: 30px; /* Ширина логотипа */
+    height: 30px; /* Высота логотипа */
+    margin-right: 10px; /* Отступ между логотипом и текстом */
+}
+
+.username {
+    font-family: "BodoniModa";
+    font-size: 20px; /* Размер шрифта для текста */
+}
+.username2 {
+    font-family: "BodoniModa";
+    font-size: 20px; /* Размер шрифта для текста */
 }

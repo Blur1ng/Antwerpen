@@ -1,0 +1,12 @@
+"1: в Conjuctiva и hikikomori Kai html'ях сделать через цикл или через базовый шаблон похожие элементы"
+"2: Сделать у header'а рандомно меняющуюся тень через for mb"
+3: в views + utils сделать нормальный общий для всех класс(по возможности)
+4: сделать нормальную страницу отображения вещей
+5: добавить минимальные ссылки на профиль вк/тг в backstage 
+6: попробовать хостонуть сайт через .github.io
+7: попробовать сделать связсь с поддержкой(со мной)
+"8: поправить utils распределение по item'ам"
+"9: возможность выставления оценки при регистрации на вещь"
+
+user проставляет оценку > оценка идет в бд > проверяем есть ли user в kto :True  > raing-=user_name(user_rating)>rating+=user_rating>send(round((cloth.rating + rating) / (cloth.count_of_votes),1))
+                                                                          :False > kto+={user_name: user_rating}>rating+=user_rating>count_of_votes+=1>send(round((cloth.rating + rating) / (cloth.count_of_votes),1))

@@ -16,18 +16,20 @@
 {% block mainpage %}
     {% block divchik %}    
     {% endblock divchik %}
-        <ul id="mainmenu" class="mainmenu">
+        <ul class="mainmenu">
             {% for page in menu %}
                 {% if page.title == "LOGIN" %}
-                        {% if user.is_authenticated %}
-                            <li><a href="{% url page.url_name|slice:"0:-5"|add:"logout" %}">LOGOUT</a></li>
-                        {% else %}
-                            <li><a href="{% url page.url_name %}">{{ page.title }}</a></li>
-                        {% endif %}
-
-
+                    {% if user.is_authenticated %}
+                        <li><a class="base-font base-text-decor" href="{% url page.url_name|slice:"0:-5"|add:"logout" %}">LOGOUT</a></li>
+                    {% else %}
+                        <li><a class="base-font base-text-decor" href="{% url page.url_name %}">{{ page.title }}</a></li>
+                    {% endif %}
                 {% else %}
-                    <li><a href="{% url page.url_name %}">{{ page.title }}</a></li>
+                    {% if page.title == "ANTWEARPEN" %}
+                        <li><a class="base-font ANTWEARPEN" href="{% url page.url_name %}">{{ page.title }}</a></li>
+                    {% else %}
+                        <li><a class="base-font base-text-decor" href="{% url page.url_name %}">{{ page.title }}</a></li>
+                    {% endif %}
                 {% endif %}
             {% endfor %}            
         </ul>
@@ -43,7 +45,7 @@
 </td></tr>
 <tr><td valign=top>
 	<div id="footer">
-		<p>&copy;2024年  | Я срал на авторские права - все у всех спизжено.</p>		
+		<p>-&nbsp;ESBCorporation | 2024&nbsp;-</p>		
 	</div>
 </td></tr></table>
 </body>

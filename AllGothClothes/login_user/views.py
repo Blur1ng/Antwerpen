@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from Clothes.utils import menu
+import os
 
-path_temp = "/Users/evgene/Documents/django/djsite2/AllGothClothes/AllGothClothes/Clothes/templates/logreg"
+base_dir = os.path.dirname(os.path.abspath(__file__))
+path_temp = path4images = os.path.join(base_dir, '../Clothes/templates/logreg')
 
 def login(request):
     context = {}
