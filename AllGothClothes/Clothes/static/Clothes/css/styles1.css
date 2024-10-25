@@ -29,23 +29,10 @@ body.feed {
     background: url('../images/1.jpg') center top/100% no-repeat;
     background-size: cover;
 }
-table {
-    width: 98%; /* Ширина таблицы занимает 100% ширины контейнера */
-    max-width: 100%; /* Максимальная ширина таблицы не превышает 100% */
-    table-layout: fixed; /* Фиксированная ширина столбцов таблицы */
-    border-collapse: collapse; /* Объединение границ ячеек таблицы */
-}
 
 img {
     max-width: 100%; /* Изображения в ячейках таблицы адаптивны по ширине */
     height: auto; /* Поддержание соотношения сторон изображений */
-}
-td {
-    width: 25%; /* Ширина ячейки таблицы равна 25% ширины таблицы */
-}
-td.for-clothes-bg{
-    background: rgba(26, 25, 25, 0.5) no-repeat center/100%;
-    border-color: rgba(26, 25, 25, 1);
 }
 
 @media only screen and (max-width: 600px) {
@@ -107,9 +94,9 @@ input:checked ~ .appear {
     margin: 100px auto
 }
 .box4logocnv{
-    background: url('../images/logo_brend/puj.jpg') center top/100% no-repeat;
+    background: url('../images/logo_brend/cnv1.png') center top/100% no-repeat;
     width: 600px;
-    height: 140px;
+    height: 220px;
     border: 0px;
     margin: 70px auto
 }

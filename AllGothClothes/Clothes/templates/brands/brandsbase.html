@@ -1,14 +1,62 @@
-<table border="1" cellpadding="20" cellspacing="0">
+<style>
+    .clothes-container {
+        width: 98%;
+        max-width: 100%;
+        margin: 0 auto; /* Центрирование контейнера */
+    }
+    
+    .clothes-row {
+        display: flex; /* Flexbox для строки */
+        flex-wrap: wrap; /* Перенос элементов на следующую строку */
+        justify-content: space-between; /* Равномерное распределение элементов */
+        margin-bottom: 20px; /* Отступ между рядами */
+    }
+    
+    .clothes-item {
+        width: 24%; /* Ширина элемента (4 в ряд) */
+        box-sizing: border-box; /* Учет padding и border в ширине */
+        background: rgba(26, 25, 25, 0.5);
+        border-color: rgba(26, 25, 25, 1);
+        text-align: center;
+        padding: 10px; /* Отступы вокруг содержимого */
+        border-radius: 5px; /* Закругленные углы */
+        transition: transform 0.3s; /* Плавный переход при изменении размера */
+    }
+    
+    .clothes-item img {
+        width: 100%; /* Растягиваем изображение на всю ширину элемента */
+        height: auto; /* Сохраняем пропорции */
+        display: block; /* Убираем пробелы под изображением */
+        transition: transform 0.3s; /* Плавный переход для изображения */
+    }
+    
+    .clothes-item:hover img {
+        transform: scale(0.95); /* Увеличиваем изображение при наведении */
+    }
+    
+    h2 {
+        text-align: center; /* Центрирование заголовка */
+        margin: 10px 0 0; /* Отступы для заголовка */
+    }
+    
+    .qwe {
+        color: white; /* Цвет текста заголовка */
+        margin: 0; /* Убираем отступы */
+    }
+    
+</style>
+
+<div class="clothes-container">
     {% for i in allitems %}
-        <tr>
+        <div class="clothes-row">
             {% for p in i %}
-                <td valign="center" align="center" class='for-clothes-bg'>
+                <div class="clothes-item for-clothes-bg">
                     <a href="/Brands/{{title}}/{{p}}">
-                        <img class="size4shablon_img" src="{{ p.photo.url }}">
+                        <img src="{{ p.photo.url }}" alt="{{ p.name }}">
                     </a>
-                    <h2><p class='qwe'>{{ p.name }}</p></h2>   
-                </td>      
+                    <h2><p class='qwe'>{{ p.name }}</p></h2>
+                </div>
             {% endfor %}
-        </tr>
+        </div>
     {% endfor %}
-</table>
+</div>

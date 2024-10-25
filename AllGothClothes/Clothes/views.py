@@ -21,12 +21,12 @@ class Brands(DataMixin, ListView):
     model = Brand
     context_object_name = 'posts'
     def get_context_data(self, *, object_list=None, **kwargs) -> dict[str, Any]:
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        path4images = os.path.join(base_dir, './static/Clothes/images/4body')
+        #base_dir = os.path.dirname(os.path.abspath(__file__)) #for changing background
+        #path4images = os.path.join(base_dir, './static/Clothes/images/4body') #for changing background
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title='Brands page')
         super_dict = dict(list(context.items()) + list(c_def.items()))
-        super_dict["images"] = [f for f in os.listdir(path4images) if os.path.isfile(os.path.join(path4images, f))]
+        #super_dict["images"] = [f for f in os.listdir(path4images) if os.path.isfile(os.path.join(path4images, f))] #for changing background
         return super_dict
     
 class Conjunctiva(Allbrandssettings):

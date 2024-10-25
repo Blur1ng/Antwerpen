@@ -5,53 +5,142 @@
 {% endblock divchik %}
 
 {% block content %}
+
 <style>
-    .headerzxc{
-        background: rgb(136, 136, 136, 0.5) no-repeat center/100%;
+    .headerzxc {
+        background: rgba(23, 11, 53, 0.3) no-repeat center/100%;
         box-shadow: inset 0 3em 3em black, 0em 3px 2em rgb(0, 0, 0);
         height: 50px;
+        position: relative; /* Делаем header относительным */
+        z-index: 1; /* Устанавливаем z-index для header */
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .video-background {
+        position: fixed; /* Фиксируем видео на фоне */
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1; /* Помещаем видео под контентом */
+        transform: translate(-50%, -50%);
+        object-fit: cover; /* Обеспечивает покрытие всего экрана */
+    }
+
+    .content {
+        position: relative;
+        z-index: 2; /* Контент поверх видео */
+
+    }
+    .skip-page{
+        margin: 0px 0px 600px 0px;
+    }
+    /* brend containers */
+    .brand-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        gap: 20px; /* Расстояние между элементами */
+    }
+
+    .brand {
+        flex: 1 1 calc(25% - 20px); /* 4 элемента в ряду с учетом отступов */
+        max-width: calc(25% - 20px);
+        text-align: center;
+        background-color: white;
+        border-radius: 10px; /* Закругленные углы */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Тень для эффекта подъема */
+        overflow: hidden; /* Обрезаем содержимое для закругленных углов */
+        transition: transform 0.3s, box-shadow 0.3s; /* Плавные эффекты */
+    }
+
+    .brand img {
+        max-width: 100%;
+        height: auto;
+        display: block; /* Убираем пробелы под изображением */
+        padding: 10px; /* Отступы внутри элемента */
+        transition: transform 0.3s; /* Плавный эффект при наведении */
+    }
+
+    .brand:hover {
+        transform: translateY(-5px); /* Подъем при наведении */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Увеличенная тень */
+    }
+
+    .brand:hover img {
+        transform: scale(1.05); /* Увеличение изображения при наведении */
+    }
+
+    @media (max-width: 768px) {
+        .brand {
+            flex: 1 1 calc(50% - 20px); /* 2 элемента в ряду на планшетах */
+            max-width: calc(50% - 20px);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .brand {
+            flex: 1 1 100%; /* 1 элемент в ряду на мобильных устройствах */
+            max-width: 100%;
+        }
     }
 </style>
 
-<body>   
-    <table border="1" cellpadding="20" cellspacing="0">
-        <tr>
-            {% for p in posts %}
-                <td valign="center" align="center" bgcolor="white">
-                    <a href="/Brands/{{p.name}}"><img src="{{ p.photo.url }}"></a>
-                </td>          
-            {% endfor %}
-        </tr>
-    </table>    
-</body>
-<script>
-    const body = document.body;
-    const images = [
-        {% for image in images %}
-            '{% static "Clothes/images/4body/"|add:image %}',
+<body>
+    <video class="video-background" autoplay muted loop>
+        <source src="{% static 'Clothes/images/vid4.mp4' %}" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+    <div class="brand-container">
+        {% for p in posts %}
+            <div class="brand">
+                <a href="/Brands/{{ p.name }}">
+                    <img src="{{ p.photo.url }}" alt="{{ p.name }}" style="max-width: 100%; height: auto;">
+                </a>
+            </div>
         {% endfor %}
-    ]; 
-    let currentImageIndex = 0;
+    </div>
+</body>
+
+
+
+
+<script>
+    //const body = document.body;
+    //const images = [
+    //    {% for image in images %}
+    //        '{% static "Clothes/images/4body/"|add:image %}',
+    //    {% endfor %}
+    //]; 
+    //let currentImageIndex = 0;
     let shadowIndex = 0;
-    let transitionDuration = 3000;
+    //let transitionDuration = 3000;
 
-    function changeBackground() {
-        const newImage = images[currentImageIndex];
-        body.style.transition = `background-image ${transitionDuration}ms ase max-height`;
-        body.style.backgroundImage = `url(${newImage})`;
-        body.style.backgroundRepeat = 'no-repeat';
-        body.style.backgroundPosition = 'center';
-        body.style.backgroundSize = 'cover';
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-
-    }
-    changeBackground();     
-    setInterval(changeBackground, transitionDuration);
+    //function changeBackground() {
+    //    const newImage = images[currentImageIndex];
+    //    body.style.transition = `background-image ${transitionDuration}ms ase max-height`;
+    //    body.style.backgroundImage = `url(${newImage})`;
+    //    body.style.backgroundRepeat = 'no-repeat';
+    //    body.style.backgroundPosition = 'center';
+    //    body.style.backgroundSize = 'cover';
+    //    currentImageIndex = (currentImageIndex + 1) % images.length;
+    //
+    //}
+    //changeBackground();     
+    //setInterval(changeBackground, transitionDuration);
     var k = 1
     function changeshadow() {
         const header = document.querySelector('.headerzxc');
         rndm = Math.random()
-        header.style.boxShadow = `inset 0 ${Math.abs(k - rndm)*1.5}em 2em black, 0em ${Math.abs(k - rndm)*1}em 2em rgb(0, 0, 0)`;
+        header.style.boxShadow = `inset 0 ${Math.abs(k - rndm)*1}em 2em black, 0em ${Math.abs(k - rndm)*1}em 2em rgb(0, 0, 0)`;
         k = rndm
     }
     changeshadow();     
