@@ -25,7 +25,7 @@
                         <li><a class="base-font base-text-decor" href="{% url page.url_name %}">{{ page.title }}</a></li>
                     {% endif %}
                 {% else %}
-                    {% if page.title == "ANTWEARPEN" %}
+                    {% if page.title == "ANTWERPEN" %}
                         <li><a class="base-font ANTWEARPEN" href="{% url page.url_name %}">{{ page.title }}</a></li>
                     {% else %}
                         <li><a class="base-font base-text-decor" href="{% url page.url_name %}">{{ page.title }}</a></li>
@@ -36,16 +36,14 @@
     </div>
 {% endblock mainpage %}
 <hr class="hr-header" color="black">
-<div class="content-text">
-    {% block content %}
-    {% endblock content %}
-</div>
+{% block content %}
+{% endblock content %}
 
 </td></tr></table>
 </td></tr>
 <tr><td valign=top>
 	<div id="footer">
-		<p>-&nbsp;ESBCorporation | 2024&nbsp;-</p>		
+		<p class="base-font">&nbsp;&nbsp;&nbsp;&nbsp;&copy;&nbsp;EB corporation | 2024&nbsp;</p>		
 	</div>
 </td></tr></table>
 </body>

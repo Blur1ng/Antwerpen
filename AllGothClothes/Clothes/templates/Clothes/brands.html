@@ -79,10 +79,18 @@
         transform: scale(1.05); /* Увеличение изображения при наведении */
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
+        .headerzxc {
+            height: 35px;
+        }
+    }
+    @media (max-width: 800px) {
         .brand {
             flex: 1 1 calc(50% - 20px); /* 2 элемента в ряду на планшетах */
             max-width: calc(50% - 20px);
+        }
+        .headerzxc {
+            height: 30px;
         }
     }
 
@@ -93,23 +101,23 @@
         }
     }
 </style>
-
-<body>
-    <video class="video-background" autoplay muted loop>
-        <source src="{% static 'Clothes/images/vid4.mp4' %}" type="video/mp4">
-        Ваш браузер не поддерживает видео.
-    </video>
-    <div class="brand-container">
-        {% for p in posts %}
-            <div class="brand">
-                <a href="/Brands/{{ p.name }}">
-                    <img src="{{ p.photo.url }}" alt="{{ p.name }}" style="max-width: 100%; height: auto;">
-                </a>
-            </div>
-        {% endfor %}
-    </div>
-</body>
-
+<div class="content-text">
+    <body>
+        <video class="video-background" autoplay muted loop>
+            <source src="{% static 'Clothes/images/vid4.mp4' %}" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+        <div class="brand-container">
+            {% for p in posts %}
+                <div class="brand">
+                    <a href="/Brands/{{ p.name }}">
+                        <img src="{{ p.photo.url }}" style="max-width: 100%; height: auto;">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</div>
 
 
 

@@ -1,11 +1,19 @@
 {% extends 'Clothes/base.html' %}
 
 {% block divchik %}  
-    <div class="headercnv">
+    <div class="headerisdp">
 {% endblock divchik %}
 
 {% block content %}
-<h1>SOON</h1>
-ай си дед пипл) 
+<style>
+    .skip-page{
+        margin: 0px 0px 700px 0px;
+    }
+</style>
+<body class='isdp'>
+    <div class="box4logoisdp"></div>
+    {% include "brands/brandsbase.html"  %}
+    <p class="skip-page"></p>
+</body>
 
 {% endblock content %}

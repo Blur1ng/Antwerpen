@@ -57,6 +57,8 @@ class News(Allbrandssettings):
     template_name = "Clothes/news.html"   
 
 def rate_cloth(request):
+
+
     if request.method == 'POST':
         cloth_name = request.POST.get('cloth_name')
         rating = int(request.POST.get('rating'))
@@ -91,3 +93,5 @@ def rate_cloth(request):
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
 
+def srofl(request):
+    return render(request, "Clothes/srofl.html", {})

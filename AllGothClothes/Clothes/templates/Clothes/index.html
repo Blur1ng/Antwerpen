@@ -1,33 +1,137 @@
 {% extends 'Clothes/base.html' %}
+{% load static %}
 {% block divchik %}    
     <div class="header"> 
 {% endblock divchik %}
 
 {% block content %}
 <style>
-    div.nothing{
-        margin: 1700px auto;
+    @font-face {
+        font-family: "RUPrata-Regular";
+        src: url("/static/Clothes/fonts/RUPrata-Regular.ttf");
     }
     .qq{
         color: black;
+        width: 100%;
         font-size: 50px;
+        position: absolute;
+        left: 50%; /* Центрируем по горизонтали */
+        transform: translate(-50%, -50%); /* Сдвигаем элемент на половину его ширины и высоты */
+    }
+    /* появляющиеся надписи */
+    body {
+        font-family: RUPrata-Regular;
+    }
+    
+    .content {
+        padding: 10px;
+
+    }
+    
+    .fade-in {
+        font-family: RUPrata-Regular;
+        color: black; /* Цвет текста */
+        line-height: 1.2; 
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .padding-4-fade {
+        padding: 20px; /* Отступы вокруг текста */
+        border-radius: 1px; /* Скругленные углы */
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 4images */
+    .container {
+        position: relative; /* Родительский элемент для позиционирования */
+        overflow: hidden; /* Скрыть все, что выходит за границы */
+        width: 100%; /* Ширина контейнера */
+        height: 100vh; /* Высота контейнера */
+
+    }
+    
+    .image {
+        position: absolute; /* Позволяет изображениям выходить за границы контейнера */
+        max-width: none; /* Убедитесь, что изображения не сжимаются */
+
+        max-width: 100%; /* Ограничивает ширину изображения */
+        height: auto; /* Сохраняет пропорции */
+        margin: 10px; /* Отступ между изображениями */
+    }
+
+    .background-image {
+        opacity: 0.5;
+        position: absolute; 
+        width: 100%; /* Ширина контейнера */
+        height: 100%; /* Высота контейнера */
+        
+        top: 9%;
+        left: 50%; /* Центрируем по горизонтали */
+        transform: translate(-50.5%, -12%); /* Сдвигаем элемент на половину его ширины и высоты */
+        background-position: center top; /* Центрируем по горизонтали и прижимаем к верху */
+        background-repeat: no-repeat;
+        background-image: url("{% static 'Clothes/images/4mainpage/4.png' %}");
+        pointer-events: none; /* Запретить взаимодействие с элементом */
+    }
+    .for2image{
+        top: 10%;
+        left: 50%;
+        position: absolute;
+    }
+    @media (max-width: 1000px) {
+        .for2image{
+            left: 30%;
+        }
+    }
+    @media (max-width: 800px) {
+        .for2image{
+            left: 20%;
+        }
     }
 
 </style>
+<div class="background-image"></div>
+<div style="height: 50px;"></div>
+<p class='qq' align="center" >The main page of my site</p>
+<body class="mainbg">
+    <div class="content">
+        <div style="height: 550px;"></div>
+        <div class="padding-4-fade fade-in" style="text-align: center;background-color: rgba(0, 0, 0, 0.1);">
+            <h1 class="fade-in">Antwerpen — сайт-галлерея, <br>на котором можно найти одежду различных брендов, <br>в большинстве своем так называемых «ВК-брендов».</h1>
+        </div>
 
+        <div style="height: 670px;"></div>
+        <div style="text-align: center;background-color: rgba(0, 0, 0, 0.1);" class="padding-4-fade fade-in">
+            <h1 class="fade-in">На сайте можно посмотреть, как новые, так и старые коллекции,<br>о которых мало кто знает, ведь их тираж был ограничен.<br>Также, есть возможность посмотреть оценки пользователей<br>на некоторую вещь и поставить ей свою оценку</h1>
+        </div>
 
-<body class='mainbg'>
-    
-    <p class='qq' align="center">The main page of my site</p>
-
-    <div class="nothing"></div>
+        <div style="height: 600px;"></div>
+        <div class="container">
+            <img src="{% static 'Clothes/images/4mainpage/1.png' %}" class="image for2image">
+            <div style="text-align: center; background-color: rgba(0, 0, 0, 0.1);" class="padding-4-fade fade-in">
+                <h1 class="fade-in">Сайт является моим холстом, на котором я пытался<br>смешать как можно больше красок и отточить свое<br>мастерство в сферах дизайна и разработки</h1>
+            </div>
+        </div>
+        <div class="container">
+            <img src="{% static 'Clothes/images/4mainpage/castle1.png' %}" class="image" style="top: 34%; left: -2%;">
+            <img src="{% static 'Clothes/images/4mainpage/2.png' %}" class="image" style="top: 10%; right: -4%;">
+        </div>
+        <!--<div class="container">
+            <img src="{% static 'Clothes/images/4mainpage/2.png' %}" class="image" style="top: 20%; right: -50px;">
+        </div>-->
+    </div>
 </body>
 <script>
 
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-    async function demo2() {
+    async function demo2() { //the main page of my siteq
         while(true) {
             await sleep(5000);
             document.querySelector('.qq').textContent = "The main cage of my mind";
@@ -52,21 +156,23 @@
             await sleep(300);
             document.querySelector('.qq').textContent = "The main page of my site";
             await sleep(1000);
-            if (Math.random() > 0.5){
+            if (Math.random() > 0.6){
                 document.querySelector('.qq').style.color = "rgb(86, 41, 41)";
                 document.querySelector('.qq').style.textShadow = "10px 5px 10px rgb(86, 41, 41)"
                 document.querySelector('.qq').textContent = "YOU ARE NOT ALONE";
                 await sleep(300);
                 document.querySelector('.qq').style.fontSize = "75px" 
-                await sleep(75);
+                await sleep(50);
                 document.querySelector('.qq').style.fontSize = "85px" 
-                await sleep(75);
-                document.querySelector('.qq').style.fontSize = "100px" 
-                await sleep(75);
+                await sleep(50);
+                document.querySelector('.qq').style.fontSize = "95px" 
+                await sleep(50);
+                document.querySelector('.qq').style.fontSize = "107px" 
+                await sleep(50);
                 document.querySelector('.qq').style.fontSize = "115px" 
-                await sleep(75);
+                await sleep(50);
                 document.querySelector('.qq').style.fontSize = "125px" 
-                await sleep(75);
+                await sleep(50);
             }
             document.querySelector('.qq').style.color = "black";
             document.querySelector('.qq').style.fontSize = "50px" 
@@ -78,6 +184,18 @@
     }
 
     demo2();
+    document.addEventListener('scroll', function() { //page scroll text
+        const elements = document.querySelectorAll('.fade-in');
+        const windowHeight = window.innerHeight;
+    
+        elements.forEach(function(element) {
+            const elementTop = element.getBoundingClientRect().top;
+    
+            if (elementTop < windowHeight - 300) { // Появление за 50px до видимости
+                element.classList.add('visible');
+            }
+        });
+    });
 </script>
 {% endblock content %}
 

@@ -4,7 +4,7 @@ from django.views.generic import ListView
 
 menu = [{'title': 'BRANDS', 'url_name': 'Brands'},
         {'title': 'FEEDBACK', 'url_name': 'Feedback'},
-        {'title': 'ANTWEARPEN', 'url_name': 'ANTWEARPEN'},
+        {'title': 'ANTWERPEN', 'url_name': 'ANTWERPEN'},
         {'title': 'NEWS', 'url_name': 'News'},
         {'title': 'LOGIN', 'url_name': 'login'},
 ]

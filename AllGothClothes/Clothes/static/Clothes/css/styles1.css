@@ -7,18 +7,67 @@ body.q {
 
 }
 
+/* ################################################################################# */
+
+.header{
+	background: rgb(136, 136, 136, 0.5) no-repeat center/100%;
+	box-shadow: inset 0 3em 3em black, 0em 3px 2em rgb(0, 0, 0);
+	height: 50px;
+}
+
+.headercnj{
+	background: rgba(23, 11, 53, 0.5) no-repeat center/100%;
+	box-shadow: inset 0 2em 3em black, 0em 2px 2em rgb(0, 0, 0);
+	height: 50px;
+}
+
+.headerisdp{
+	background: rgba(55, 23, 27, 0.5) no-repeat center/100%;
+	box-shadow: inset 0 1em 3em black, 0em 2px 2em rgb(0, 0, 0);
+	height: 50px;
+}
+
+.headerkai{
+	background: rgba(65, 65, 65, 0.5) no-repeat center/100%;
+	box-shadow: inset 0 2em 3em black, 0em 2px 2em rgb(0, 0, 0);
+	height: 50px;
+}
+
+.headercnv{
+	background: rgba(136, 101, 101, 0.5) no-repeat center/100%;
+	box-shadow: inset 0 2em 3em black, 0em 2px 2em rgb(0, 0, 0);
+	height: 50px;
+}
+
+.headerfeed{
+	background: rgba(147, 134, 134, 0.5) no-repeat center/100%;
+	box-shadow: inset 0 1em 2em rgb(144, 136, 136), 0em 1px 2em rgb(130, 110, 110);
+	height: 50px;
+}
+
+/* ################################################################################# */
+
 body.mainbg {   
-    background: url('../images/mainbg.jpg') center top/100% no-repeat;
+    background: url('../images/mainbg2.png') center top/100% no-repeat;
+    background-size: cover;
 }
 body.cnj {   
     background: url('../images/cnjbg.jpg') center/100%;
+    background-size: cover;
 }
 body.kai {   
     background: url('../images/kaibg.jpg') center top/100%;
+    background-size: cover;
 }
 body.cnv {   
     background: url('../images/cnvbg.png') center top/100%;
+    background-size: cover;
 }
+body.isdp {   
+    background: url('../images/isdpbg1.jpg') center/100% no-repeat;
+    background-size: cover;
+}
+
 body.log { 
     align-items: center; /* Выравнивание по вертикали */
     background: url('../images/grass1.png') center top/100% no-repeat;
@@ -30,14 +79,16 @@ body.feed {
     background-size: cover;
 }
 
+/* ################################################################################# */
+
 img {
-    max-width: 100%; /* Изображения в ячейках таблицы адаптивны по ширине */
-    height: auto; /* Поддержание соотношения сторон изображений */
+    max-width: 100%; 
+    height: auto; 
 }
 
 @media only screen and (max-width: 600px) {
     td {
-        width: 50%; /* При ширине экрана меньше 600px, ширина ячейки изменяется на 50% */
+        width: 50%; 
     }
 }
 
@@ -73,6 +124,9 @@ input {
 input:checked ~ .appear {
     max-height: 300px;
 }
+
+/* ################################################################################# */
+
 .box {
     width: 400px;
     height: 300px;
@@ -100,6 +154,14 @@ input:checked ~ .appear {
     border: 0px;
     margin: 70px auto
 }
+.box4logoisdp{
+    background: url('../images/logo_brend/isdplogo.png') center top/100% no-repeat;
+    width: 600px;
+    height: 255px;
+    border: 0px;
+    margin: 70px auto
+}
+
 /*#######################################################################################*/
 .menu_mobile {
     position: fixed;
@@ -142,6 +204,11 @@ input:checked ~ .appear {
     font-family: "DMSerifText-Regular";
     src: url("../fonts/DMSerifText-Regular.ttf");
 }
+
+@font-face {
+    font-family: "Academy";
+    src: url("../fonts/Academy.ttf");
+}
 .base-font{
     font-family: "Castoro Titling";
 }
@@ -152,6 +219,82 @@ input:checked ~ .appear {
 	text-shadow: 0px 4px 5px rgb(0, 0, 0), 0px 1px 5px rgb(0, 0, 0);
 	text-decoration:underline;
     font-size: 25px;
+}
+@media (max-width: 1000px) {
+	.ANTWEARPEN{
+        margin: center;
+        color: #fefefe;
+        text-shadow: 0px 4px 5px rgb(0, 0, 0), 0px 1px 5px rgb(0, 0, 0);
+        text-decoration:underline;
+        font-size: 20px;
+    }
+    .header{
+        box-shadow: inset 0 2em 3em black, 0em 3px 2em rgb(0, 0, 0);
+        height: 35px;
+    }
+    .headercnj{
+        box-shadow: inset 0 1em 2em black, 0em 2px 2em rgb(0, 0, 0);
+        height: 35px;
+    }
+    
+    .headerisdp{
+        box-shadow: inset 0 1em 3em black, 0em 2px 2em rgb(0, 0, 0);
+        height: 35px;
+    }
+    
+    .headerkai{
+        box-shadow: inset 0 2em 3em black, 0em 2px 2em rgb(0, 0, 0);
+        height: 35px;
+    }
+    
+    .headercnv{
+        box-shadow: inset 0 2em 3em black, 0em 2px 2em rgb(0, 0, 0);
+        height: 35px;
+    }
+    
+    .headerfeed{
+        box-shadow: inset 0 1em 2em rgb(144, 136, 136), 0em 1px 2em rgb(130, 110, 110);
+        height: 35px;
+    }
+    
+}
+@media (max-width: 800px) {
+	.ANTWEARPEN{
+        margin: center;
+        color: #fefefe;
+        text-shadow: 0px 4px 5px rgb(0, 0, 0), 0px 1px 5px rgb(0, 0, 0);
+        text-decoration:underline;
+        font-size: 15px;
+    }
+    .header{
+        box-shadow: inset 0 2em 3em black, 0em 3px 2em rgb(0, 0, 0);
+        height: 30px;
+    }
+    .headercnj{
+        box-shadow: inset 0 1em 2em black, 0em 2px 2em rgb(0, 0, 0);
+        height: 30px;
+    }
+    
+    .headerisdp{
+        box-shadow: inset 0 1em 3em black, 0em 2px 2em rgb(0, 0, 0);
+        height: 30px;
+    }
+    
+    .headerkai{
+        box-shadow: inset 0 2em 3em black, 0em 2px 2em rgb(0, 0, 0);
+        height: 30px;
+    }
+    
+    .headercnv{
+        box-shadow: inset 0 2em 3em black, 0em 2px 2em rgb(0, 0, 0);
+        height: 30px;
+    }
+    
+    .headerfeed{
+        box-shadow: inset 0 1em 2em rgb(144, 136, 136), 0em 1px 2em rgb(130, 110, 110);
+        height: 30px;
+    }
+    
 }
 
 .ANTWEARPEN:hover {
