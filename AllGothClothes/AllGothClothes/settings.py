@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Clothes.apps.ClothesConfig',
     'login_user',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

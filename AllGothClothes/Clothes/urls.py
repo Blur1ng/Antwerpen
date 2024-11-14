@@ -13,5 +13,6 @@ urlpatterns = [
     path('Brands/iseedeadpeople/', Iseedeadpeople.as_view(), name='Iseedeadpeople'),
     path('Brands/<str:brand_name>/<str:cloth_name>', Cloth_detail.as_view(), name='cloth detail'),
     path('rate/', rate_cloth, name='rate_cloth'),
-    path('srofl/', srofl, name="srofl"),
+    #rest
+    path('API/ClothAPI', AllgothclothesAPIView.as_view(), name='ClothAPI')
 ]

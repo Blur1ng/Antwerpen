@@ -2,11 +2,14 @@ from typing import Any
 from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse
 from django.views.generic import ListView
-from django.contrib.auth.models import auth
+from django.forms import model_to_dict
 from .utils import *
 from .models import *
-import os
-from django.views.decorators.csrf import csrf_exempt
+from .serializer import ClothSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+
 
 class Mainpage(DataMixin, ListView):
     template_name = "Clothes/index.html"
@@ -93,5 +96,18 @@ def rate_cloth(request):
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
 
-def srofl(request):
-    return render(request, "Clothes/srofl.html", {})
+class AllgothclothesAPIView(APIView):
+    def get(self, request):
+        lst = Cloth.objects.all().values()
+        return Response({'Clothes': list(lst)})
+
+    def post(self, request):
+        post_new = Cloth.objects.create(
+            name=request.data['name'],
+            brand=request.data['brand'],
+            cost=request.data['cost'],
+        )
+        return Response({'psot': model_to_dict(post_new)})
+
+    #queryset = Cloth.objects.all()
+    #serializer_class = ClothSerializer
